@@ -2,30 +2,24 @@
 package logic;
 
 import java.util.Date;
+import javax.persistence.Entity;
 
-
+@Entity
 public class Tutor extends Person{
     
-    private int tutor_id;
+    //private int tutor_id;
     private String tutorType;
 
     public Tutor() {
     }
 
-    public Tutor(int tutor_id, String tutorType, String dni, String name, String lastName, String phoneNumber, 
-            String address, Date birthday) {
-        super(dni, name, lastName, phoneNumber, address, birthday);
-        this.tutor_id = tutor_id;
+    public Tutor(String tutorType, int id, String dni, String name, String lastName, String phoneNumber, String address, 
+            Date birthday) {
+        super(id, dni, name, lastName, phoneNumber, address, birthday);
         this.tutorType = tutorType;
     }
 
-    public int getTutor_id() {
-        return tutor_id;
-    }
-
-    public void setTutor_id(int tutor_id) {
-        this.tutor_id = tutor_id;
-    }
+    
 
     public String getTutorType() {
         return tutorType;

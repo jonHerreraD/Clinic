@@ -2,32 +2,28 @@
 package logic;
 
 import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 
-
+@Entity
 public class Secretary extends Person {
     
-    private int secretary_id;
+    //private int secretary_id;
     private String sector;
+    @OneToOne
     private User aUser;
 
     public Secretary() {
     }
 
-    public Secretary(int secretary_id, String sector, User aUser, String dni, String name, String lastName, 
-            String phoneNumber, String address, Date birthday) {
-        super(dni, name, lastName, phoneNumber, address, birthday);
-        this.secretary_id = secretary_id;
+    public Secretary(String sector, User aUser, int id, String dni, String name, String lastName, String phoneNumber, 
+            String address, Date birthday) {
+        super(id, dni, name, lastName, phoneNumber, address, birthday);
         this.sector = sector;
         this.aUser = aUser;
     }
 
-    public int getSecretary_id() {
-        return secretary_id;
-    }
-
-    public void setSecretary_id(int secretary_id) {
-        this.secretary_id = secretary_id;
-    }
+   
 
     public String getSector() {
         return sector;

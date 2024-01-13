@@ -1,43 +1,38 @@
 
 package logic;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
-
-public class Patient extends Person{
+@Entity
+public class Patient extends Person implements Serializable{
     
-    private int patient_id;
+    //private int patient_id;
     private boolean has_HI;
     private String bloodType;
+    @OneToOne
     private Tutor tutor;
+    @OneToMany(mappedBy="pati")
     private List<Turn> turnList;
     
 
     public Patient() {
     }
 
-    public Patient(int patient_id, boolean has_HI, String bloodType, Tutor tutor, List<Turn> turnList, String dni, 
-            String name, String lastName, String phoneNumber, String address, Date birthday) {
-        super(dni, name, lastName, phoneNumber, address, birthday);
-        this.patient_id = patient_id;
+    public Patient(boolean has_HI, String bloodType, Tutor tutor, List<Turn> turnList, int id, String dni, String name, 
+            String lastName, String phoneNumber, String address, Date birthday) {
+        super(id, dni, name, lastName, phoneNumber, address, birthday);
         this.has_HI = has_HI;
         this.bloodType = bloodType;
         this.tutor = tutor;
         this.turnList = turnList;
     }
 
-   
-
-    public int getPatient_id() {
-        return patient_id;
-    }
-
-    public void setPatient_id(int patient_id) {
-        this.patient_id = patient_id;
-    }
-
-    public boolean isHas_HI() {
+       public boolean isHas_HI() {
         return has_HI;
     }
 

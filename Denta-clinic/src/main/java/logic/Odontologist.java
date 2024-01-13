@@ -1,25 +1,31 @@
 
 package logic;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
-
-public class Odontologist extends Person {
+@Entity
+public class Odontologist extends Person implements Serializable {
     
-    private int odont_id;
+    //private int odont_id;
     private String speciality;
+    @OneToMany(mappedBy="odonto")
     private List<Turn> turnList;
+    @OneToOne
     private User aUser;
+    @OneToOne
     private Schedule aSchedule;
 
     public Odontologist() {
     }
 
-    public Odontologist(int odont_id, String speciality, List<Turn> turnList, User aUser, Schedule aSchedule, String dni, 
+    public Odontologist(String speciality, List<Turn> turnList, User aUser, Schedule aSchedule, int id, String dni, 
             String name, String lastName, String phoneNumber, String address, Date birthday) {
-        super(dni, name, lastName, phoneNumber, address, birthday);
-        this.odont_id = odont_id;
+        super(id, dni, name, lastName, phoneNumber, address, birthday);
         this.speciality = speciality;
         this.turnList = turnList;
         this.aUser = aUser;
@@ -27,14 +33,6 @@ public class Odontologist extends Person {
     }
 
     
-
-    public int getOdont_id() {
-        return odont_id;
-    }
-
-    public void setOdont_id(int odont_id) {
-        this.odont_id = odont_id;
-    }
 
     public String getSpeciality() {
         return speciality;
